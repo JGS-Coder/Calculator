@@ -8,6 +8,7 @@ root = Tk()
 root.title("Calculator with GUI")
 root.geometry("350x500")
 root.configure(bg="#929fa2")
+root.iconbitmap("icon_calculator.ico")
 
 PARAMS = None
 
