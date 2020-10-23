@@ -3,11 +3,9 @@ import tkinter as tk
 from tkinter import messagebox
 import math
 
-# ideen: mit dem ergebnis weiterrechnen, brüche
-
 # Create Window, set title and set background color
 root = Tk()
-root.title("Taschenrechner mit GUI")
+root.title("Calculator with GUI")
 root.geometry("350x500")
 root.configure(bg="#929fa2")
 
@@ -19,7 +17,7 @@ operator = ""
 # Title
 labelTop = tk.Label(root, bg="#929fa2",
                     text="Calculator", font=("Calibri", 22, 'bold'))
-labelTop.place(x=75, y=3)
+labelTop.place(x=110, y=3)
 
 
 def PressT(number):
@@ -33,30 +31,30 @@ def PressSQRT():
     try:
         operator = str(math.sqrt(eval(operator)))
     except SyntaxError:
-        messagebox.showerror(title="Fehler", message=" Keine gültige Eingabe")
+        messagebox.showwarning(title="Warning!", message=" Invalid Input!")
     except ValueError:
-        messagebox.showerror(title="Fehler", message="Wurzel ziehen im Minus-"
-                                                     "Bereich nicht möglich")
+        messagebox.showwarning(title="Warning!", message="Not possible to take"
+                                                     "root in the minus area")
     except TypeError:
-        messagebox.showerror(title="Fehler", message="Ungültige Eingabe!")
+        messagebox.showwarning(title="Warning!", message="Invalid Input!")
     textin.set(operator)
 
 
-def gleich():
+def equal():
     global operator
     if not operator:
-        messagebox.showerror(title="Fehler", message="Keine gültige Eingabe")
+        messagebox.showwarning(title="Warning!", message=" Invalid Input!")
         return
     op = ""
     try:
         op = str(eval(operator))
     except ZeroDivisionError:
-        messagebox.showerror(title="Fehler", message="Division durch 0 nicht "
-                             "möglich")
+        messagebox.showerror(title="Error", message="Division by zero not "
+                             "possible")
     except SyntaxError:
-        messagebox.showerror(title="Fehler", message="Ungültige Eingabe!")
+        messagebox.showwarning(title="Error", message=" Invalid Input!")
     except TypeError:
-        messagebox.showerror(title="Fehler", message="Ungültige Eingabe!")
+        messagebox.showwarning(title="Error", message=" Invalid Input!")
     textin.set(op)
     operator = ''
 
@@ -77,15 +75,14 @@ def quit():
     root.destroy()
 
 
-# Ausgabefeld
+# Creating the display
 
 e1 = tk.Entry(root, font=("Courier New", 12, 'bold'), textvar=textin,
               width=25, bd=15)
 e1.place(x=35, y=50)
 e1.configure(state='disabled')
 
-# Buttons
-
+# Down here, i created the Buttons and call the functions
 
 T1 = tk.Button(root, font=("Calibri", 15, 'bold'), padx=14, pady=14, text='1',
                command=lambda: PressT(1))
@@ -127,21 +124,21 @@ T0 = tk.Button(root, font=("Calibri", 15, 'bold'), padx=14, pady=14, bd=4,
                command=lambda: PressT(0), text="0")
 T0.place(x=25, y=400, width=125, height=75)
 
-TKlaOn = tk.Button(root, padx=47, font=("Calibri", 15, 'bold'), pady=14,
+TBraOn = tk.Button(root, padx=47, font=("Calibri", 15, 'bold'), pady=14,
                    bd=4, command=lambda: PressT("("), text="(")
-TKlaOn.place(x=120, y=115, width=50, height=50)
+TBraOn.place(x=120, y=115, width=50, height=50)
 
-TKlaOff = tk.Button(root, padx=47, font=("Calibri", 15, 'bold'), pady=14,
+TBraOff = tk.Button(root, padx=47, font=("Calibri", 15, 'bold'), pady=14,
                     bd=4, command=lambda: PressT(")"), text=")")
-TKlaOff.place(x=175, y=115, width=50, height=50)
+TBraOff.place(x=175, y=115, width=50, height=50)
 
 TSQRT = tk.Button(root, padx=47, font=("Calibri", 15, 'bold'), pady=14,
                   bd=4, command=lambda: PressSQRT(), text="√")
 TSQRT.place(x=230, y=115, width=50, height=50)
 
-TPu = tk.Button(root, padx=47, font=("Calibri", 15, 'bold'), pady=14,
+TPo = tk.Button(root, padx=47, font=("Calibri", 15, 'bold'), pady=14,
                 bd=4, command=lambda: PressT("."), text=".")
-TPu.place(x=160, y=400, width=80, height=75)
+TPo.place(x=160, y=400, width=80, height=75)
 
 TPlus = tk.Button(root, padx=14, font=("Calibri", 15, 'bold'), pady=14, bd=4,
                   text="+", command=lambda: PressT("+"))
@@ -151,17 +148,17 @@ TMinus = tk.Button(root, padx=14, font=("Calibri", 15, 'bold'), pady=14,
                    bd=4, text="-", command=lambda: PressT("-"))
 TMinus.place(x=290, y=170, width=45, height=45)
 
-TMal = tk.Button(root, padx=14, font=("Calibri", 15, 'bold'), pady=14,
+TMul = tk.Button(root, padx=14, font=("Calibri", 15, 'bold'), pady=14,
                  bd=4, text="*", command=lambda: PressT("*"))
-TMal.place(x=290, y=220, width=45, height=45)
+TMul.place(x=290, y=220, width=45, height=45)
 
-TPot = tk.Button(root, padx=14, font=("Calibri", 15, 'bold'), pady=14,
+TPow = tk.Button(root, padx=14, font=("Calibri", 15, 'bold'), pady=14,
                  bd=4, text="x^x", command=lambda: PressT("**"))
-TPot.place(x=285, y=115, width=50, height=50)
+TPow.place(x=285, y=115, width=50, height=50)
 
-TPuPu = tk.Button(root, padx=14, font=("Calibri", 15, 'bold'), pady=14,
+TDiv = tk.Button(root, padx=14, font=("Calibri", 15, 'bold'), pady=14,
                   bd=4, text="/", command=lambda: PressT("/"))
-TPuPu.place(x=240, y=220, width=45, height=45)
+TDiv.place(x=240, y=220, width=45, height=45)
 
 TCE = tk.Button(root, padx=14, font=("Calibri", 15, 'bold'),
                 pady=119, bd=4, text="CE", command=clrbut)
@@ -171,11 +168,11 @@ TDEL = tk.Button(root, padx=14, font=("Calibri", 15, 'bold'),
                  pady=119, bd=4, text="DEL", command=DelLast)
 TDEL.place(x=240, y=270, width=95, height=60)
 
-TGleich = tk.Button(root, padx=151, font=("Calibri", 15, 'bold'),
-                    pady=14, bd=4, command=gleich, text="=")
-TGleich.place(x=250, y=400, width=85, height=75)
+TEqual = tk.Button(root, padx=151, font=("Calibri", 15, 'bold'),
+                    pady=14, bd=4, command=equal, text="=")
+TEqual.place(x=250, y=400, width=85, height=75)
 
-TExit = tk.Button(root, text="Beenden", font=("Calibri", 15, 'bold'),
+TExit = tk.Button(root, text="Quit", font=("Calibri", 15, 'bold'),
                   command=root.destroy)
 TExit.place(x=25, y=115, width=90, height=50)
 
