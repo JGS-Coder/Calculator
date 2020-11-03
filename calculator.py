@@ -1,6 +1,6 @@
 from tkinter import StringVar, Tk
 import tkinter as tk
-from tkinter import messagebox
+from tkinter import messagebox, Menu
 import math
 
 # Create Window, set title and set background color
@@ -74,6 +74,23 @@ def clrbut():
 
 def quit():
     root.destroy()
+
+
+def action_get_info_dialog():
+    m_text = "\
+************************\n\
+Creator: Yannik M.\n\
+Date: 21th October 2020\n\
+Version: 1.3\n\
+************************"
+    messagebox.showinfo(message=m_text, title="About")
+
+
+menuleiste = Menu(root)
+help_menu = Menu(root, tearoff=0)
+help_menu.add_command(label="Information", command=action_get_info_dialog)
+menuleiste.add_cascade(label="About", menu=help_menu)
+root.config(menu=menuleiste)
 
 
 # Creating the display
