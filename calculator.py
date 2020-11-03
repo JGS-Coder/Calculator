@@ -86,11 +86,12 @@ Version: 1.3\n\
     messagebox.showinfo(message=m_text, title="About")
 
 
-menuleiste = Menu(root)
+# Creating a short menu
+menubar = Menu(root)
 help_menu = Menu(root, tearoff=0)
 help_menu.add_command(label="Information", command=action_get_info_dialog)
-menuleiste.add_cascade(label="About", menu=help_menu)
-root.config(menu=menuleiste)
+menubar.add_cascade(label="About", menu=help_menu)
+root.config(menu=menubar)
 
 
 # Creating the display
