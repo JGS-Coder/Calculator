@@ -8,7 +8,7 @@ root = Tk()
 root.title("Calculator with GUI")
 root.geometry("350x500")
 root.configure(bg="#929fa2")
-root.iconbitmap("icon_calculator.ico")
+root.iconbitmap("logo_calculator.ico")
 
 PARAMS = None
 
@@ -81,7 +81,7 @@ def action_get_info_dialog():
 ************************\n\
 Creator: Yannik M.\n\
 Date: 21th October 2020\n\
-Version: 1.3\n\
+Version: 1.0.2\n\
 ************************"
     messagebox.showinfo(message=m_text, title="About")
 
