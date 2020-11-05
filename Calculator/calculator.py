@@ -1,7 +1,8 @@
-from tkinter import StringVar, Tk
+from tkinter import StringVar, Tk, Label
 import tkinter as tk
 from tkinter import messagebox, Menu
 import math
+from time import strftime
 
 # Create Window, set title and set background color
 root = Tk()
@@ -21,6 +22,23 @@ labelTop = tk.Label(root, bg="#929fa2",
 labelTop.place(x=110, y=3)
 
 
+# Clock
+def time():
+    string = strftime('%H:%M:%S %p')
+    lbl.config(text=string)
+    lbl.after(1000, time)
+
+
+lbl = Label(root, font=('calibri', 12, 'bold'),
+            background='#929fa2',
+            foreground='black')
+
+
+lbl.place(x=3, y=3)
+time()
+
+
+# Functions
 def PressT(number):
     global operator
     operator = operator+str(number)
@@ -80,8 +98,8 @@ def action_get_info_dialog():
     m_text = "\
 ************************\n\
 Creator: Yannik M.\n\
-Date: 21th October 2020\n\
-Version: 1.0.2\n\
+Release: 21th October 2020\n\
+Version: 1.0.3\n\
 ************************"
     messagebox.showinfo(message=m_text, title="About")
 
