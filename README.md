@@ -9,4 +9,4 @@ You dont need much to launch it. Just an output engine like Python or Visual Stu
 
 You're allowed to use this project commercially but you have to leave a copyright notice of me. If you are using this private, there's no problem.
 
-Enjoy my first tkinter project.
+Enjoy my first tkinter project. And please leave me Feedback. Thank you!
