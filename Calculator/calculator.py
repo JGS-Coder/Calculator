@@ -5,6 +5,7 @@ import math
 from time import strftime
 
 # Create Window, set title and set background color
+# If you just copied the Code, make sure you comment out line 13 or download the .ico from the calculator file on github
 root = Tk()
 root.title("Calculator with GUI")
 root.geometry("350x500")
